@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>home</title>
+        <link rel="stylesheet" href="base.css">
+    </head>
+    
+    <body>
+        <div id="wrapper">
+            <nav>
+                <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="introduction.html">CS Program</a></li>
+                <li><a href="taa.html">TA Application</a></li>
+                <li><a href="gpaCal.html">GPA Calculator</a></li>
+                </ul>
+            </nav>
+            <main>
+                <h2>Teaching Assistant Application</h2>
+                <p>Required fields marked with an asterisk <span class="star">*</span></p>
+                <form method="post" action="https://webdevbasics.net/scripts/demo.php">
+                    <label for="stuFName"><span class="star">*</span>First Name:</label>
+                    <input type="text" name="stuFName" id="stuFName" required="required">
+
+                    <label for="stuLName"><span class="star">*</span>Last Name:</label>
+                    <input type="text" name="stuLName" id="stuLName" required="required">
+
+                    <label for="stuID"><span class="star">*</span>ID:</label>
+                    <input type="text" name="stuID" id="stuID" required="required" maxlength="9" value="S00">
+
+                    <label for="stuGender">Gender:</label>
+                    <select name="stuGender" id="stuGender" value="Please choose">
+                        <option> </option>
+                        <option>Female</option>
+                        <option>Male</option>
+                        <option>Don't want to say</option>
+                    </select>
+                    
+                    <label for="stuGPA">GPA:</label>
+                    <input type="number" name="stuGPA" id="stuGPA" οnkeyup= "if( ! /^d*(?:.d{0,2})?$/.test(this.value)){alert('Number Only!');this.value='';}" maxlength="4" oninput="if(value>4)value=4; if(value<0)value=0" title="Please input 0-4 numbers">
+
+                    <label for="SubmissionDate">Submission Date:</label>
+                    <input type="text" name="SubmissionDate" id="SubmissionDate" value="" disabled="true">
+
+                    <script type="text/javaScript">
+                        var date = new Date();
+                        var y = date.getFullYear();  
+                        var m = date.getMonth() + 1;  
+                        m = m < 10 ? '0' + m : m;  
+                        var d = date.getDate();  
+                        d = d < 10 ? ('0' + d) : d;
+
+                        var submitTime=m+'/'+d+'/'+y;
+                        var sub = document.getElementById("SubmissionDate");
+                        sub.value = submitTime.toString();
+//                        $("#SubmissionDate").val(submitTime.toString()); 
+                    </script>
+
+                    <label for="myComments">Comments:</label>
+                    <textarea name="myComments" id="myComments" rows="2" cols="20" required="required"></textarea>
+
+                    <input type="submit" value="Submit" id="mySubmit">
+                </form>
+                <br>
+            </main>
+            <footer>
+                Copyright &copy; AUM_CSCI_4970<br>
+                <a href="mailto:hhu1@aum.edu">Hanyu@Hu.com</a>
+           </footer>
+        </div>
+    </body>
+    
+    
+</html>

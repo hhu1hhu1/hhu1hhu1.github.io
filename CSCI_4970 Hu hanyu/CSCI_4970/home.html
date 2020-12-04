@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>home</title>
+        <link rel="stylesheet" href="base.css">
+        <script>
+            function change(num){
+                var p = 'img/p' + num +'.jpg';
+                document.getElementById("mainImg").src = p;
+                if(num == 1)
+                    document.getElementById("mainUrl").href="https://www.aum.edu/professors-n-pajamas/";
+                else if(num == 2)
+                    document.getElementById("mainUrl").href="https://www.aum.edu/soar";
+                else if(num == 3)
+                    document.getElementById("mainUrl").href="https://www.aum.edu/transfer/";
+                else if(num == 4)
+                    document.getElementById("mainUrl").href="https://www.aum.edu/apply/";
+                else if(num == 5)
+                    document.getElementById("mainUrl").href="https://warhawktransit.ridesystems.net/?fbclid=IwAR0I-SV4eGua7fyimzWHoSq6qd8aHdrg-HlbKNIF2A1lyVWqilfSPwET-e8&action=";
+            }
+        </script>
+    </head>
+    
+    <body>
+        <div id="wrapper">
+            <nav>
+                <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="introduction.html">CS Program</a></li>
+                <li><a href="taa.html">TA Application</a></li>
+                <li><a href="gpqCal.html">GPA Calculator</a></li>
+    <!--
+                    <li>
+                        <form>
+                            <input type="text" placeholder="Search" aria-label="Search">
+                        </form>
+                    </li>
+    -->
+                </ul>
+            </nav>
+            <main>
+                <div class="showpic">
+                    <a id="mainUrl" href="https://www.aum.edu/professors-n-pajamas/"><img id="mainImg" src="img/p1.jpg"></a>
+                </div>
+                <ul class="thumbs">
+                    <li onclick="change(1)"><img src="img/p1.jpg"></li>
+                    <li onclick="change(2)"><img src="img/p2.jpg"></li>
+                    <li onclick="change(3)"><img src="img/p3.jpg"></li>
+                    <li onclick="change(4)"><img src="img/p4.jpg"></li>
+                    <li onclick="change(5)"><img src="img/p5.jpg"></li>
+                </ul>
+            </main>
+            <footer>
+                Copyright &copy; AUM_CSCI_4970<br>
+                <a href="mailto:hhu1@aum.edu">Hanyu@Hu.com</a>
+           </footer>
+        </div>
+    </body>
+  
+</html>
+    

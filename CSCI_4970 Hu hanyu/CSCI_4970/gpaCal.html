@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>home</title>
+        <link rel="stylesheet" href="base.css">
+        <script type="text/javaScript">
+            var r = 0;
+            function addtr(){
+                
+                var editTable=document.getElementById("tbody");
+                var tr=document.createElement("tr");
+                var td1=document.createElement("td");
+                var add="<input type='text' style='margin:auto'"
+                td1.innerHTML=add+"/>";
+                r++;
+                var td2=document.createElement("td");
+                td2.innerHTML="<select id='td"+ r +"' value='' style='margin:auto' required='required'> <option value='-1'> </option> <option value='4.0'>A</option> <option value='3.0'>B</option> <option value='2.0'>C</option> <option value='1.0'>D</option> <option value='0'>F</option> </select>";
+                var td3=document.createElement("td");
+                r++;
+                td3.innerHTML="<select id='td"+ r +"' value='' style='margin:auto' required='required'> <option> </option> <option>1</option> <option>2</option> <option>3</option> <option>4</option> <option>5</option> <option>6</option> <option>7</option> <option>8</option> </select>";
+
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+
+                editTable.appendChild(tr);
+            }
+
+
+            function gpacalc()
+            {
+                var rows=document.getElementById("tbody").rows.length;
+                if(rows == 0){
+                    alert("Please add course!");
+                    return 0;
+                }
+                
+                var grade = new Array(rows);
+                var credit = new Array(rows);
+//                console.log(rows);
+
+                for(var i = 0; i < rows; i++){
+                    //Get options value/text from every cells
+                    var c1 = (i+1)*2-1;
+                    var c2 = (i+1)*2;
+//                    console.log(document.getElementsByTagName("input")[c1].value);
+//                    console.log(document.getElementById("td"+c2).value)
+                    var sel1 = document.getElementById("td"+c1);
+                    var sel2 = document.getElementById("td"+c2);
+                    var g = sel1.options[sel1.selectedIndex].value;
+                    var c = sel2.options[sel2.selectedIndex].text;
+                    if(g == -1) alert("Please fill the grade of course " + eval(i+1));
+                    else if(!c) alert("Please fill the credit of course " + eval(i+1));
+                    else {
+                        grade[i] = g;
+                        credit[i] = c;
+//                        console.log(grade[i]);
+//                        console.log(credit[i]);
+                        console.log("Calculate");
+                        // Calculate GPA
+                        var cumGra =0;
+                        var cumCre = 0;
+                        var res = 0;
+                        for(var j = 0; j < grade.length; j++){
+                            var curGrad = parseInt(grade[j],10);
+                            var curCred = parseInt(credit[j],10);
+        //                    console.log(curGrad);
+        //                    console.log(curCred);
+                            cumGra += curGrad * curCred;
+                            cumCre += curCred;
+                        }
+
+                        console.log(cumGra);
+                        console.log(cumCre);
+
+                        res = cumGra / cumCre;
+
+                        alert("Your GPA is " + eval(res));
+
+                        return 0;
+                    }
+                }
+
+
+            }
+        </script>
+    </head>
+    
+    <body>
+        <div id="wrapper">
+            <nav>
+                <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="introduction.html">CS Program</a></li>
+                <li><a href="taa.html">TA Application</a></li>
+                <li><a href="gpaCal.html">GPA Calculator</a></li>
+
+                </ul>
+            </nav>
+            <main>
+                <h2>GPA Calculator</h2>&nbsp;
+                <form >
+                <table name="GPACalcForm" id="editTable">
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Grade</th>
+                        <th>Credits</th>
+                    </tr>
+                    <tbody id="tbody" >
+                                        
+                    </tbody>
+                </table>
+                </form>&nbsp;
+                <div>
+                <input type="button" class="but" value="Add Course" name="AddButton" onclick="addtr()">
+                <input type="button" class="but" value="Calculate" name="CalcButton" onclick="gpacalc()">&nbsp;
+                </div>
+            </main><br><br><br>
+            <footer>
+                Copyright &copy; AUM_CSCI_4970<br>
+                <a href="mailto:hhu1@aum.edu">Hanyu@Hu.com</a>
+           </footer>
+        </div>
+    </body>
+</html>
